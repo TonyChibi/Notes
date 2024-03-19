@@ -73,8 +73,8 @@ class NotesManager():
     def add(self, note: Note):
         with open(self.path, "a", encoding="utf-8") as file:
             file.write(f"{note}\n")
-            pass
-        pass
+        
+       
     
     def all(self):
         for note in self.store:
@@ -82,8 +82,14 @@ class NotesManager():
 
 
 
-    def find(self):
-        return
+    def find(self, name: str):
+        res=[]
+        for item in self.store:
+            if item.name==name:
+                res.append(item)
+        return res
+        # for i in res:
+        #     print(f"{i.name}:\n\t{i.text[0,20]}")
     
     
     def change(self):
