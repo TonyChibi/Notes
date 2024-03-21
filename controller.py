@@ -21,6 +21,10 @@ def start(state: bool):
             pass
 
         case "create":
+            note=interface.create()
+            if note:
+                NM.store.append(note)
+                NM.add(note)
             pass
 
         case "change":
