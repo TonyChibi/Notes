@@ -10,9 +10,37 @@ def start(state: bool):
     BM=BinManager()
     is_bin=False
     NM.store_file()
+    
+    match interface.greeting():
+        case "all":
+            for i, item in enumerate(NM.store):
+                if item:
+                    print(f"{i+1})\twhat\t{item.name}")
+
+        case "find":
+            pass
+
+        case "create":
+            pass
+
+        case "change":
+            pass
+
+        case "delete":
+            pass
+
+        case "bin":
+            pass
+
+        case "help":
+            pass
+
+        case "quit":
+            pass
+        
     NM.all()
-    for n in NM.store:
-        print(n)
+    # for n in NM.store:
+    #     print(n)
     # note=NM.newNote()
     # NM.add(note)
     # print(note)
