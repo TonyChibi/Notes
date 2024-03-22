@@ -22,3 +22,6 @@ bin_menu=["There in Bin you can do next things:",
           "help - to get help notes",
           "quit - to get back to Note Page"]
 input_menu=">>\t"
+
+def seek(self,option: str="find"):
+      return "what are you want to {option}? "

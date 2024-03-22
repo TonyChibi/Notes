@@ -9,15 +9,20 @@ def start(state: bool):
     NM=NotesManager()
     BM=BinManager()
     is_bin=False
+
+    interface.greeting()
     NM.store_file()
-    
-    match interface.greeting():
+    menu=interface.menu()
+    match menu:
         case "all":
             for i, item in enumerate(NM.store):
                 if item:
                     print(f"{i+1})\twhat\t{item.name}")
 
         case "find":
+            name=interface.seek(menu)
+            NM.find(name)
+
             pass
 
         case "create":
