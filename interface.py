@@ -29,3 +29,7 @@ def text_input():
 def seek(self, option:str="find"):
     answer=input(speeches.seek(option))
     return answer
+
+def show_names(self, *notes: Note):
+    for i, note in notes:
+        print(f"{i})\t{note.name}")

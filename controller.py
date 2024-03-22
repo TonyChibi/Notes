@@ -21,19 +21,25 @@ def start(state: bool):
 
         case "find":
             name=interface.seek(menu)
-            NM.find(name)
+            res=NM.find(name)
+            interface.show_names(res)
 
-            pass
 
         case "create":
             note=interface.create()
             if note:
                 NM.store.append(note)
                 NM.add(note)
-            pass
+            
 
         case "change":
-            pass
+            name=interface.seek(menu)
+            res=NM.find(name)
+            interface.show_names(res)
+            choise=interface.choose()
+            text=interface.text_input()
+            res[choise].text=text
+            
 
         case "delete":
             pass
