@@ -45,7 +45,7 @@ class NotesManager():
         print(speeches.text_input)
         text="\n".join(iter(input,""))
         return Note(name,time.time(), text)
-   
+
 
     def add(self, note: Note):
         with open(self.path, "a", encoding="utf-8") as file:
@@ -74,3 +74,10 @@ class NotesManager():
     def delete(self, note: Note):
         self.store.remove(note)
         return note.name
+    
+    def update(self):
+        with open (self.path,"w",encoding="utf-8") as file:
+            for note in self.store:
+                if note:
+                    file.write(f"{note}\n")
+            

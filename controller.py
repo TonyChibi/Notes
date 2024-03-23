@@ -42,7 +42,12 @@ def start(state: bool):
             
 
         case "delete":
-            pass
+            name=interface.seek(menu)
+            answer=interface.approvement()
+            if answer:
+                BM.add(NM.delete)
+                NM.update()
+            
 
         case "bin":
             pass
