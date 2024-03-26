@@ -2,6 +2,10 @@ import speeches
 from note import Note
 import time
 
+def assistant():
+    message=input(f"\n{speeches.assistant}\n> ").lower()
+    return message
+
 def greeting():
     print(speeches.greeting)
 
