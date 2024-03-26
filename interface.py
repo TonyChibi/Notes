@@ -33,3 +33,27 @@ def seek(self, option:str="find"):
 def show_names(self, *notes: Note):
     for i, note in notes:
         print(f"{i})\t{note.name}")
+
+def show_text(self, *notes: Note):
+    for i, note in notes:
+        print(f"{i})\t{note.text}")
+    
+
+def approvement(swlf, name: str, option: str):
+    answer=input(speeches.approvement(name,option)).lower()
+    if answer is "yes" or "y":
+        return True
+    else:
+        return False
+
+
+def choose_number(self, number):
+    state=True
+    choise=""
+    while state:
+        choise=input(speeches.choise+speeches.exit)
+        if choise.isdigit() and 0<choise<number:
+            state=False
+        elif choise.lower()=="stop":
+            return ""
+    return choise

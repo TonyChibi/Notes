@@ -23,5 +23,11 @@ bin_menu=["There in Bin you can do next things:",
           "quit - to get back to Note Page"]
 input_menu=">>\t"
 
+exit="print 'stop' to stop"
+
+
 def seek(self,option: str="find"):
       return "what are you want to {option}? "
+
+def approvement(self, name: str, option: str="delete"):
+      return "are you shure you want to {option} {name}?\nprint 'yes' or 'y' "
