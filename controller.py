@@ -56,7 +56,8 @@ class Controller():
                     pass
 
                 case "help":
-                    pass
+                    interface.menu()
+                    
 
                 case "quit":
                     state=False

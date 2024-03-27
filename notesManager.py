@@ -52,6 +52,11 @@ class NotesManager():
             file.write(f"{note}\n")
         
 
+    def filter(self):
+        for note in self.store:
+            
+            pass
+        pass 
 
 
     def find(self, name: str):
