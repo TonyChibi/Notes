@@ -5,6 +5,9 @@ class Note:
         self.text=text 
     def __str__(self):
         return "{name:"+self.name+"\ntext:"+self.text+"\ntime:"+str(self.time_stamp)+"\n}"
+    
+    def get_date(self):
+        return self.time_stamp
     # def getName(self):
     #     return self.name
     

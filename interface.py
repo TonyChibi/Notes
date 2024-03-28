@@ -29,20 +29,22 @@ def text_input():
     text="\n".join(iter(input,""))
     return text
 
-def seek(self, option:str="find"):
-    answer=input(speeches.seek(option))
+def seek(option:str="find"):
+    answer=input(speeches.seek(option)+"\n>\t")
     return answer
 
-def show_names(self, *notes: Note):
-    for i, note in notes:
-        print(f"{i})\t{note.name}")
+def show_names( *notes: Note):
+    for i, item in enumerate(notes):
+        if item:
+            print(f"{i+1})\t{item.name}")
 
-def show_text(self, *notes: Note):
-    for i, note in notes:
-        print(f"{i})\t{note.text}")
+def show_text( *notes: Note):
+    for i, item in enumerate(notes):
+        if item:
+            print(f"{i+1})\t{item.name}{item.text}")
     
 
-def approvement(swlf, name: str, option: str):
+def approvement(name: str, option: str):
     answer=input(speeches.approvement(name,option)).lower()
     if answer is "yes" or "y":
         return True
@@ -50,13 +52,13 @@ def approvement(swlf, name: str, option: str):
         return False
 
 
-def choose_number(self, number):
+def choose_number( number):
     state=True
     choise=""
     while state:
-        choise=input(speeches.choise+speeches.exit)
-        if choise.isdigit() and 0<choise<number:
+        choise=input(speeches.choise+"\n"+speeches.exit+"\n>\t")
+        if choise.isdigit() and 0<int(choise)<=number:
             state=False
         elif choise.lower()=="stop":
-            return ""
+            return "0"
     return choise

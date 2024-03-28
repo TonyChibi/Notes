@@ -53,20 +53,17 @@ class NotesManager():
         
 
     def filter(self):
-        for note in self.store:
-            
-            pass
+        self.store=sorted(self.store, Note.get_date)
         pass 
 
 
     def find(self, name: str):
-        res=[]
-        for item in self.store:
-            if item.name==name:
-                res.append(item)
+        res=[note for note in self.store if name in note.name]
+        # for item in self.store:
+        #     if item.name==name:
+        #         res.append(item)
         return res
-        # for i in res:
-        #     print(f"{i.name}:\n\t{i.text[0,20]}")
+
     
     
     def change(self, note: Note, name: str, text: str, time: int):

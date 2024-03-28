@@ -20,9 +20,10 @@ class Controller():
             message=interface.assistant()
             match message:
                 case "all":
-                    for i, item in enumerate(self.obj.store):
-                        if item:
-                            print(f"{i+1})\t{item.name}")
+                    interface.show_names(*self.obj.store)
+                    # for i, item in enumerate(self.obj.store):
+                    #     if item:
+                    #         print(f"{i+1})\t{item.name}")
 
                 case "find":
                     self.find(message)
@@ -64,10 +65,10 @@ class Controller():
                     
             
 
-    def find(self, menu: str):
-        name=interface.seek(menu)
+    def find(self, message: str):
+        name=interface.seek(message)
         res=self.NM.find(name)
-        interface.show_names(res)
-        num=int(interface.choose_number(res.length))-1
+        interface.show_names(*res)
+        num=int(interface.choose_number(len(res)))-1
         interface.show_text(res[num])
         return res[num]   
