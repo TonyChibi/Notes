@@ -68,7 +68,12 @@ class Controller():
     def find(self, message: str):
         name=interface.seek(message)
         res=self.NM.find(name)
-        interface.show_names(*res)
-        num=int(interface.choose_number(len(res)))-1
-        interface.show_text(res[num])
-        return res[num]   
+        if res:
+            interface.show_names(*res)
+            num=int(interface.choose_number(len(res)))-1
+            if num:
+                interface.show_text(res[num])
+                return res[num]
+        else:
+            interface.not_found()
+           

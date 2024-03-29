@@ -21,8 +21,11 @@ def create():
     return Note(name,time.time(), text)
 
 def name_input():
-    name=input(speeches.name_input)
+    name=input(speeches.name_input+"\n>\t")
     return name
+
+def not_found():
+    print(speeches.not_found)
 
 def text_input():
     print(speeches.text_input)
@@ -60,5 +63,5 @@ def choose_number( number):
         if choise.isdigit() and 0<int(choise)<=number:
             state=False
         elif choise.lower()=="stop":
-            return "0"
+            return "1"
     return choise

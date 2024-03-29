@@ -14,7 +14,9 @@ exit="print 'stop' to stop"
 
 greeting="\t\tHello, Blyad\n"
 
-name_input="\tInsert the name of a note\n"
+name_input="Insert the name of a note"
+
+not_found="I cannot find anything"
 
 text_input="\n\tInsert the text\n Empty row will finish writing"
 
