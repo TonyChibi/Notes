@@ -9,8 +9,7 @@ class Note:
     
     def get_time_stamp(self):
         return self.time_stamp
-    # def getName(self):
-    #     return self.name
+    
     def get_date(self):
         return time.ctime(self.time_stamp)
       

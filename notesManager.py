@@ -62,6 +62,7 @@ class NotesManager():
         # for item in self.store:
         #     if item.name==name:
         #         res.append(item)
+        # print(f"{res[0]}\n{res[1]}")
         return res
 
     

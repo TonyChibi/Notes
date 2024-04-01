@@ -17,6 +17,9 @@ class Controller():
         
         interface.menu()
         while state:
+            now=time.time()
+            print(time.ctime(now))
+
             message=interface.assistant()
             match message:
                 case "all":
@@ -37,12 +40,11 @@ class Controller():
                     
 
                 case "change":
-                    name=interface.seek(message)
-                    res=self.NM.find(name)
-                    interface.show_names(res)
-                    choise=interface.choose_number(res.length)
+                    res=self.find(message)
                     text=interface.text_input()
-                    res[choise].text=text
+                    name=interface.name_input()
+                    self.NM.change(res,name,text,time.time())
+                    
                     
 
                 case "delete":
@@ -65,15 +67,17 @@ class Controller():
                     
             
 
+
     def find(self, message: str):
         name=interface.seek(message)
         res=self.NM.find(name)
-        if res:
+        if len(res)>1:
             interface.show_names(*res)
             num=int(interface.choose_number(len(res)))-1
-            if num:
-                interface.show_text(res[num])
-                return res[num]
+            interface.show_text(res[num])
+            return res[num]
+        elif len(res)==1:
+            interface.show_text(*res)
         else:
             interface.not_found()
            

@@ -37,6 +37,7 @@ def seek(option:str="find"):
     return answer
 
 def show_names( *notes: Note):
+    print()
     for i, item in enumerate(notes):
         if item:
             print(f"{i+1})\t{item.name}")
