@@ -37,7 +37,7 @@ class NotesManager():
 
             elif re.match(self.r_end,line):
                 self.store.append(Note(t_name, float(t_date), t_text))
-
+        self.filter()
         file.close()        
     
     def newNote(self):
@@ -53,8 +53,8 @@ class NotesManager():
         
 
     def filter(self):
-        self.store=sorted(self.store, Note.get_date)
-        pass 
+        self.store=sorted(self.store, key=Note.get_time_stamp)
+        
 
 
     def find(self, name: str):
@@ -78,6 +78,7 @@ class NotesManager():
         return note.name
     
     def update(self):
+        self.filter()
         with open (self.path,"w",encoding="utf-8") as file:
             for note in self.store:
                 if note:
