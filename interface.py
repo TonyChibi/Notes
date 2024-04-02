@@ -32,7 +32,7 @@ def text_input():
     text="\n".join(iter(input,""))
     return text
 
-def seek(option:str="find"):
+def seek(option:str):
     answer=input(speeches.seek(option)+"\n>\t")
     return answer
 
@@ -49,8 +49,8 @@ def show_text( *notes: Note):
     
 
 def approvement(name: str, option: str):
-    answer=input(speeches.approvement(name,option)).lower()
-    if answer is "yes" or "y":
+    answer=input(speeches.approvement(name,option)+"\n>\t").lower()
+    if answer == "yes" or answer=="y":
         return True
     else:
         return False
@@ -64,5 +64,5 @@ def choose_number( number):
         if choise.isdigit() and 0<int(choise)<=number:
             state=False
         elif choise.lower()=="stop":
-            return "1"
+            return "0"
     return choise

@@ -38,9 +38,9 @@ input_menu=">>\t"
 
 
 
-def seek(self,option: str="find"):
+def seek(option: str):
       return f"what are you want to {option}? "
 
-def approvement(self, name: str, option: str="delete"):
-      return "are you shure you want to {option} {name}?\nprint 'yes' or 'y' "
+def approvement( name: str, option: str="delete"):
+      return f"are you shure you want to {option} the '{name}'?\nprint 'yes' or 'y' "
 

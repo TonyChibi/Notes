@@ -14,7 +14,7 @@ class Controller():
 
         interface.greeting()
         self.NM.store_file()
-        
+
         interface.menu()
         while state:
             now=time.time()
@@ -24,9 +24,7 @@ class Controller():
             match message:
                 case "all":
                     interface.show_names(*self.obj.store)
-                    # for i, item in enumerate(self.obj.store):
-                    #     if item:
-                    #         print(f"{i+1})\t{item.name}")
+                  
 
                 case "find":
                     self.find(message)
@@ -41,10 +39,14 @@ class Controller():
 
                 case "change":
                     res=self.find(message)
-                    text=interface.text_input()
-                    name=interface.name_input()
-                    self.NM.change(res,name,text,time.time())
-                    
+                    if res:
+                        text=interface.text_input()
+                        name=interface.name_input()
+                        answer=interface.approvement(res.name,message)
+                        if answer:
+                            self.NM.change(res,name,text,time.time())
+                            self.NM.update()
+                            
                     
 
                 case "delete":
@@ -56,6 +58,7 @@ class Controller():
                     
 
                 case "bin":
+                    self.obj=self.BM
                     pass
 
                 case "help":
@@ -68,16 +71,20 @@ class Controller():
             
 
 
-    def find(self, message: str):
-        name=interface.seek(message)
+    def find(self, option: str = "find"):
+        name=interface.seek(option)
         res=self.NM.find(name)
         if len(res)>1:
             interface.show_names(*res)
             num=int(interface.choose_number(len(res)))-1
-            interface.show_text(res[num])
-            return res[num]
+            if num>=0:
+                interface.show_text(res[num])
+                return res[num]
+            else:
+                return False
         elif len(res)==1:
             interface.show_text(*res)
+            return res[0]
         else:
             interface.not_found()
            
