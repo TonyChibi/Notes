@@ -8,6 +8,8 @@ note
 
 
 
+
+
 time:1712001975.0497224
 }
 {name:the new one
@@ -19,19 +21,9 @@ poo
 
 
 
+
+
 time:1712002067.3620338
-}
-{name:first
-
-text:rererere
-rererer
-rererere
-ererer
-
-
-
-
-time:1712002254.9150572
 }
 {name:sfaf
 
@@ -39,6 +31,8 @@ text:afasf
 a
 fasf
 a
+
+
 
 
 
@@ -52,12 +46,7 @@ qwewqe
 qew
 
 
+
+
 time:1712038574.6266181
-}
-{name:do
-text:do
-dododod
-dododoodod
-dodododododo
-time:1712039380.1984296
 }

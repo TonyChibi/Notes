@@ -76,7 +76,7 @@ class NotesManager():
 
     def delete(self, note: Note):
         self.store.remove(note)
-        return note.name
+        return note
     
     def update(self):
         self.filter()

@@ -50,15 +50,18 @@ class Controller():
                     
 
                 case "delete":
-                    name=interface.seek(message)
-                    answer=interface.approvement()
-                    if answer:
-                        self.BM.add(self.NM.delete(answer))
-                        self.NM.update()
+                    note=self.find(message)
+                    if note:
+                        answer=interface.approvement(note.name, message)
+                        if answer:
+                            self.BM.add(self.NM.delete(note))
+                            self.NM.update()
                     
 
                 case "bin":
                     self.obj=self.BM
+                    self.obj.update()
+                    interface.show_names(*self.obj.store)
                     pass
 
                 case "help":
