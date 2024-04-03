@@ -6,6 +6,10 @@ def assistant():
     message=input(f"\n{speeches.assistant}\n> ").lower()
     return message
 
+def bin_menu():
+    for i in speeches.bin_menu:
+        print('\t'+i)
+
 def greeting():
     print(speeches.greeting)
 
@@ -33,7 +37,7 @@ def text_input():
     return text
 
 def seek(option:str):
-    answer=input(speeches.seek(option)+"\n>\t")
+    answer=input("\t"+speeches.seek(option)+"\n>\t")
     return answer
 
 def show_names( *notes: Note):
@@ -49,7 +53,7 @@ def show_text( *notes: Note):
     
 
 def approvement(name: str, option: str):
-    answer=input(speeches.approvement(name,option)+"\n>\t").lower()
+    answer=input("\t"+speeches.approvement(name,option)+"\n>\t").lower()
     if answer == "yes" or answer=="y":
         return True
     else:
@@ -60,7 +64,7 @@ def choose_number( number):
     state=True
     choise=""
     while state:
-        choise=input(speeches.choise+"\n"+speeches.exit+"\n>\t")
+        choise=input("\t"+speeches.choise+"\n"+speeches.exit+"\n>\t")
         if choise.isdigit() and 0<int(choise)<=number:
             state=False
         elif choise.lower()=="stop":

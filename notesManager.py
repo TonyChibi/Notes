@@ -36,7 +36,8 @@ class NotesManager():
                 t_date=line.lstrip(self.r_date).removesuffix('\n')
 
             elif re.match(self.r_end,line):
-                self.store.append(Note(t_name, float(t_date), t_text))
+                self.store.append(Note(t_name.strip(), float(t_date), t_text.strip()))
+        
         self.filter()
         file.close()        
     
