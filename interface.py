@@ -22,7 +22,11 @@ def menu():
 def create():
     name=name_input()
     text=text_input()
-    return Note(name,time.time(), text)
+    if text or name:
+        return Note(name,time.time(), text)
+    else:
+        return False
+
 
 def name_input():
     name=input(speeches.name_input+"\n>\t")

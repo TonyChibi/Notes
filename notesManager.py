@@ -41,11 +41,11 @@ class NotesManager():
         self.filter()
         file.close()        
     
-    def newNote(self):
-        name=input(speeches.name_input)
-        print(speeches.text_input)
-        text="\n".join(iter(input,""))
-        return Note(name,time.time(), text)
+    # def newNote(self):
+    #     name=input(speeches.name_input)
+    #     print(speeches.text_input)
+    #     text="\n".join(iter(input,""))
+    #     return Note(name,time.time(), text)
 
 
     def add(self, note: Note):

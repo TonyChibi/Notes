@@ -61,15 +61,23 @@ class Controller():
                 case "bin":
                     self.obj=self.BM
                     self.obj.update()
+                    self.is_bin=True
                     interface.show_names(*self.obj.store)
                     pass
 
                 case "help":
-                    interface.menu()
+                    if self.is_bin:
+                        interface.bin_menu()
+                    else:
+                        interface.menu()
                     
 
                 case "quit":
-                    state=False
+                    if self.is_bin:
+                        self.obj=self.NM
+                        self.is_bin=False
+                    else:
+                        state=False
                     
             
 
