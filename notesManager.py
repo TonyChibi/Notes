@@ -6,12 +6,13 @@ class NotesManager():
     def __init__(self, path: str="notes.txt", name: str="notes"):
         self.path=path
         self.name=name
+        self.store=[]
+
     r_name=r'{name:'
     r_text=r'text:'
     r_date=r'time:'
     r_end=r'}'
-    store=[]
-
+    
 
     def store_file(self):
         file= open(self.path, "r",encoding = "utf-8")

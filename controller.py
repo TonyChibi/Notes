@@ -5,15 +5,15 @@ import time
 from note import Note
 class Controller():
 
-    NM=NotesManager()
-    BM=BinManager()
-    is_bin=False
-    obj=NM
+    
     def start(self,state: bool):
-       
+        NM=NotesManager()
+        BM=BinManager()
+        is_bin=False
+        obj=NM
 
         interface.greeting()
-        self.NM.store_file()
+        NM.store_file()
 
         interface.menu()
         while state:
@@ -23,68 +23,76 @@ class Controller():
             message=interface.assistant()
             match message:
                 case "all":
-                    interface.show_names(*self.obj.store)
+                    interface.show_names(*obj.store)
                   
 
                 case "find":
-                    self.find(message)
+                    self.find(obj, message)
 
 
                 case "create":
                     note=interface.create()
                     if note:
-                        self.NM.store.append(note)
-                        self.NM.add(note)
+                        NM.store.append(note)
+                        NM.add(note)
                     
 
                 case "change":
-                    res=self.find(message)
+                    res=self.find(obj, message)
                     if res:
                         text=interface.text_input()
                         name=interface.name_input()
                         answer=interface.approvement(res.name,message)
                         if answer:
-                            self.NM.change(res,name,text,time.time())
-                            self.NM.update()
+                            NM.change(res,name,text,time.time())
+                            NM.update()
                             
                     
 
                 case "delete":
-                    note=self.find(message)
+                    note=self.find(obj, message)
                     if note:
                         answer=interface.approvement(note.name, message)
                         if answer:
-                            self.BM.add(self.NM.delete(note))
-                            self.NM.update()
+                            BM.add(NM.delete(note))
+                            NM.update()
                     
 
                 case "bin":
-                    self.obj=self.BM
-                    self.obj.update()
-                    self.is_bin=True
-                    interface.show_names(*self.obj.store)
+                    obj=BM
+                    BM.store_file()
+                    BM.update()
+                    is_bin=True
+                    interface.show_names(*obj.store)
                     pass
 
                 case "help":
-                    if self.is_bin:
+                    if is_bin:
                         interface.bin_menu()
                     else:
                         interface.menu()
+
+                case "clear":
+                    if is_bin:
+                        BM.clear()
+                        BM.store()
+
+                
                     
 
                 case "quit":
-                    if self.is_bin:
-                        self.obj=self.NM
-                        self.is_bin=False
+                    if is_bin:
+                        obj=NM
+                        is_bin=False
                     else:
                         state=False
                     
             
 
 
-    def find(self, option: str = "find"):
+    def find(self,obj: NotesManager , option: str = "find"):
         name=interface.seek(option)
-        res=self.NM.find(name)
+        res=obj.find(name)
         if len(res)>1:
             interface.show_names(*res)
             num=int(interface.choose_number(len(res)))-1

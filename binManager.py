@@ -17,4 +17,7 @@ class BinManager(NotesManager):
     def change (self):
         return
     
+    def clear(self):
+        with open(self.path, "w", encoding="utf-8") as file:
+             file.write("")
 
