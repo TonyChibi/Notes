@@ -15,6 +15,7 @@ class NotesManager():
     
 
     def store_file(self):
+        self.store=[]
         file= open(self.path, "r",encoding = "utf-8")
         t_name=""
         t_text=""
@@ -73,7 +74,7 @@ class NotesManager():
         note.name=name
         note.text=text
         note.time_stamp=time
-        return note.name
+        return note
     
 
     def delete(self, note: Note):

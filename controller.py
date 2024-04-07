@@ -38,14 +38,23 @@ class Controller():
                     
 
                 case "change":
-                    res=self.find(obj, message)
-                    if res:
+                    if is_bin:
+                        res=self.find(obj, message)
                         text=interface.text_input()
                         name=interface.name_input()
                         answer=interface.approvement(res.name,message)
-                        if answer:
-                            NM.change(res,name,text,time.time())
-                            NM.update()
+                        if answer: 
+                            self.restore(BM.change(res, name,text, time.time()), BM, NM)
+
+                    else:
+                        res=self.find(obj, message)
+                        if res:
+                            text=interface.text_input()
+                            name=interface.name_input()
+                            answer=interface.approvement(res.name,message)
+                            if answer:
+                                NM.change(res,name,text,time.time())
+                                NM.update()
                             
                     
 
@@ -77,7 +86,11 @@ class Controller():
                         BM.clear()
                         BM.store()
 
-                
+                case "restore":
+                    if is_bin:
+                        note=self.find(BM, message)
+                        if note:
+                            self.restore(note,BM, NM)
                     
 
                 case "quit":
@@ -107,3 +120,9 @@ class Controller():
         else:
             interface.not_found()
            
+
+    def restore(self, note: Note ,bm: BinManager, nm: NotesManager):
+        nm.add(note)
+        nm.store_file()
+        bm.delete(note)
+        bm.update()

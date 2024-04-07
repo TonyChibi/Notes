@@ -53,7 +53,7 @@ def show_names( *notes: Note):
 def show_text( *notes: Note):
     for i, item in enumerate(notes):
         if item:
-            print(f"{i+1})\t{item.name}{item.text}")
+            print(f"{i+1})\t{item.name}\n{item.text}")
     
 
 def approvement(name: str, option: str):
